@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
+import { configBD } from './config/configFireBase.js';
 
-import { myFunction } from './lib/index.js';
-
-myFunction();
+window.onload = () => {
+	configBD();
+}
