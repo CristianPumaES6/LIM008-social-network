@@ -20,11 +20,15 @@ main.js
 --template/pageinite.js
 ---UI/view-controller.js
 ----lib/authBD/authFireBase.js
+```
 
 ## Contributing
-MAYRATC
-CristianPumaES6
+
+* MAYRATC
+* CristianPumaES6
 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+[Guia de git](http://rogerdudler.github.io/git-guide/index.es.html)
