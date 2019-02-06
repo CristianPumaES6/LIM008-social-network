@@ -1,4 +1,4 @@
-import { authenticateFacebook, authenticateGoogle } from '../lib/authBD/authFireBase.js';
+import { createUser, authenticateFacebook, authenticateGoogle } from '../lib/authBD/authFireBase.js';
 import { createUserFireStore, readUserFireStore } from '../lib/crudBD/crudUser.js';
 
 const detectPromisesCreateUser = (funct) => {
@@ -29,7 +29,7 @@ const detectPromisesCreateUser = (funct) => {
                         createUserFireStore('Users', objDataUser.correo, ele, objDataUser[ele])
                             .then(() => console.log('documento se escribio correctamente'))
                             .catch(() => console.log(err.message));
-                            
+
                     });
 
                 } else console.log('Usuario ya existe en la BD');
@@ -56,18 +56,17 @@ export const accesWithFbOrGoogle = (buttonFacebook, buttonGoogle) => {
         detectPromisesCreateUser(authenticateGoogle());
     });
 };
- export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword, buttonAcept) => {
-     console.log(userName)
-     console.log(userEmail)
-     console.log(userPassword)
-     console.log(buttonAcept)
+export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword, buttonAcept) => {
 
-     buttonAcept.addEventListener('click', () => {
-        console.log(userName)
-        console.log(userEmail)
-        console.log(userPassword)
-        console.log(buttonAcept)
-   
-         alert("escucha event")
-     })
- }
+    // firebase.auth().createUserWithEmailAndPassword(email, password);
+    buttonAcept.addEventListener('click', () => {
+        createUser(userEmail.value, userPassword.value)
+            .then((result) => {
+                console.log("------createUser success-------")
+                console.log(result)
+            }).catch((err) => {
+                console.log("------createUser error-------")
+                console.log(err)
+            })
+    })
+}
