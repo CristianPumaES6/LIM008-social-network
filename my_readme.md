@@ -6,3 +6,5 @@ main JS:
 --template/pageinite.js
 ---UI/view-controller
 ----lib/authBD/authFireBase.js
+
+habilitar BD; para el fireStore.
