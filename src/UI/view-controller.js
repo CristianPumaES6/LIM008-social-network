@@ -56,14 +56,26 @@ export const accesWithFbOrGoogle = (buttonFacebook, buttonGoogle) => {
         detectPromisesCreateUser(authenticateGoogle());
     });
 };
+
+
 export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword, buttonAcept) => {
 
-    // firebase.auth().createUserWithEmailAndPassword(email, password);
     buttonAcept.addEventListener('click', () => {
         createUser(userEmail.value, userPassword.value)
             .then((result) => {
-                console.log("------createUser success-------")
-                console.log(result)
+                
+                alert(`Se te ha enviado un mensaje de correo electronico:${result.user.email} \n Por favor de verificarlo para terminar con el proceso! Gracias`);
+                
+                const config = {
+                    url: 'http://localhost:8887/src'
+                };
+
+                result.user.sendEmailVerification(config)
+                result.user.sendEmailVerification(config)
+                    .catch((err) => {
+                        alert(err.message);
+                    });
+
             }).catch((err) => {
                 console.log("------createUser error-------")
                 console.log(err)
