@@ -1,4 +1,4 @@
-import { createUser, authenticateFacebook, authenticateGoogle } from '../lib/authBD/authFireBase.js';
+import { createUser, authenticateFacebook, authenticateGoogle, logInUser } from '../lib/authBD/authFireBase.js';
 import { createUserFireStore, readUserFireStore } from '../lib/crudBD/crudUser.js';
 
 const detectPromisesCreateUser = (funct) => {
@@ -46,7 +46,7 @@ const detectPromisesCreateUser = (funct) => {
 
     });
 
-}
+};
 
 export const accesWithFbOrGoogle = (buttonFacebook, buttonGoogle) => {
     buttonFacebook.addEventListener('click', () => {
@@ -63,9 +63,9 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
     buttonAcept.addEventListener('click', () => {
         createUser(userEmail.value, userPassword.value)
             .then((result) => {
-                
+
                 alert(`Se te ha enviado un mensaje de correo electronico:${result.user.email} \n Por favor de verificarlo para terminar con el proceso! Gracias`);
-                
+
                 const config = {
                     url: 'http://localhost:3000'
                 };
@@ -79,4 +79,18 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
                 console.log(err)
             })
     })
-}
+};
+
+export const btnAcceptLoginAndSendToHome = (inputEmail, inputPassword, buttonAcceptLogin) => {
+
+    buttonAcceptLogin.addEventListener('click', () => {
+
+        logInUser(inputEmail.value, inputPassword.value).then(() => {
+            console.log("Usuario correcto.")
+        }).catch((err) => {
+            console.log(err.message);
+        });
+
+    })
+
+};

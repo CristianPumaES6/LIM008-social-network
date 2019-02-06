@@ -17,3 +17,8 @@ export const authenticateGoogle = () => {
 export const createUser = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password);
 };
+
+
+export const logInUser = (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+};
