@@ -1,4 +1,4 @@
-import { createUser, authenticateFacebook, authenticateGoogle, logInUser } from '../lib/authBD/authFireBase.js';
+import { createUser, authenticateFacebook, authenticateGoogle, logInUser, userStateChange, logOutUser } from '../lib/authBD/authFireBase.js';
 import { createUserFireStore, readUserFireStore } from '../lib/crudBD/crudUser.js';
 
 const detectPromisesCreateUser = (funct) => {
@@ -94,3 +94,21 @@ export const btnAcceptLoginAndSendToHome = (inputEmail, inputPassword, buttonAcc
     })
 
 };
+
+export const mainRedSocial = (buttonLogOut) => {
+    let stateUser = [];
+    stateUser = userStateChange(stateUser);//investigar
+    console.log(stateUser)
+
+    buttonLogOut.addEventListener('click', () => {
+        let userConnect = firebase.auth().currentUser.email;
+        console.log(userConnect);
+        logOutUser().then(() => {
+            console.log('usuario fiuera de sesion');
+        }).catch ((err) => {
+            console.log(err.message)
+        })
+    })
+
+
+}
