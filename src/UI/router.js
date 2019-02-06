@@ -1,4 +1,7 @@
-import inite from './templates/pagInit.js';
- export const initRouter = () => {
-    inite()
- }
+import Inite from './templates/pagInite.js';
+
+
+
+export const initRouter = () => {
+    Inite();
+};

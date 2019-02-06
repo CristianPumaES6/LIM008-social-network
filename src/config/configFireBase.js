@@ -8,5 +8,6 @@ export const configBD = () => {
     messagingSenderId: "198207788143"
   };
   firebase.initializeApp(config);
+ 
   return 1;
 }; 

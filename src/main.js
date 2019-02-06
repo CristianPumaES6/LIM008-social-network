@@ -3,6 +3,7 @@ import { configBD } from './config/configFireBase.js';
 import { initRouter } from './UI/router.js';
 
 window.onload = () => {
+	
 	configBD();
 	initRouter();
 }
