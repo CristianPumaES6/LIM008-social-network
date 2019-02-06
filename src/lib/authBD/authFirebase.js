@@ -5,8 +5,6 @@ export const authenticateFacebook = () => {
     return firebase.auth().signInWithPopup(provider);
 };
 
-
-
 export const authenticateGoogle = () => {
     provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider);
@@ -22,3 +20,12 @@ export const createUser = (email, password) => {
 export const logInUser = (email, password) => {
     return firebase.auth().signInWithEmailAndPassword(email, password);
 };
+
+export const userStateChange = (user) => {
+    
+    return firebase.auth().onAuthStateChanged((userState) => user.push(userState));;
+};
+
+export const logOutUser = () => {
+    return firebase.auth().signOut();
+}
