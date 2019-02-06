@@ -1,12 +1,12 @@
 export const configBD = () => {
   const config ={
-    apiKey: "AIzaSyAmHyokWpQDVsmekrrcRfVkWI4sHkttmsM",
-    authDomain: "networking-43ee6.firebaseapp.com",
-    databaseURL: "https://networking-43ee6.firebaseio.com",
-    projectId: "networking-43ee6",
-    storageBucket: "networking-43ee6.appspot.com",
-    messagingSenderId: "146347443700"
-  };;
+    apiKey: "AIzaSyCjDEHFHf98PvrN6_d7HgE0S1dHjrIXGCU",
+    authDomain: "project-prueba-nw.firebaseapp.com",
+    databaseURL: "https://project-prueba-nw.firebaseio.com",
+    projectId: "project-prueba-nw",
+    storageBucket: "project-prueba-nw.appspot.com",
+    messagingSenderId: "198207788143"
+  };
   firebase.initializeApp(config);
   return 1;
 }; 

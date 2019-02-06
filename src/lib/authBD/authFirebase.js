@@ -1,3 +1,4 @@
+
 let provider;
 export const authenticateFacebook = () => {
     provider = new firebase.auth.FacebookAuthProvider();
