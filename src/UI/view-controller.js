@@ -56,3 +56,18 @@ export const accesWithFbOrGoogle = (buttonFacebook, buttonGoogle) => {
         detectPromisesCreateUser(authenticateGoogle());
     });
 };
+ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword, buttonAcept) => {
+     console.log(userName)
+     console.log(userEmail)
+     console.log(userPassword)
+     console.log(buttonAcept)
+
+     buttonAcept.addEventListener('click', () => {
+        console.log(userName)
+        console.log(userEmail)
+        console.log(userPassword)
+        console.log(buttonAcept)
+   
+         alert("escucha event")
+     })
+ }
