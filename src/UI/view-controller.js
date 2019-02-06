@@ -1,5 +1,5 @@
 import { createUser, authenticateFacebook, authenticateGoogle, logInUser, userStateChange, logOutUser } from '../lib/authBD/authFireBase.js';
-import { createUserFireStore, readUserFireStore } from '../lib/crudBD/crudUser.js';
+import { createUserFireStore, readUserFireStore, deleteUserFireStore } from '../lib/crudBD/crudUser.js';
 
 const detectPromisesCreateUser = (funct) => {
     //result tiene todo los datos de facebook o Gmial (result = Object)
@@ -95,7 +95,7 @@ export const btnAcceptLoginAndSendToHome = (inputEmail, inputPassword, buttonAcc
 
 };
 
-export const mainRedSocial = (buttonLogOut) => {
+export const mainRedSocial = (buttonLogOut, buttonDeleteUser) => {
     let stateUser = [];
     stateUser = userStateChange(stateUser);//investigar
     console.log(stateUser)
@@ -105,10 +105,17 @@ export const mainRedSocial = (buttonLogOut) => {
         console.log(userConnect);
         logOutUser().then(() => {
             console.log('usuario fiuera de sesion');
-        }).catch ((err) => {
+        }).catch((err) => {
             console.log(err.message)
         })
-    })
+    });
+
+    buttonDeleteUser.addEventListener('click', () => {
+        let userConnect = firebase.auth().currentUser.email;
+        console.log(userConnect);
+        console.log('evento click usuario eliminado');
+        deleteUserFireStore('Users', userConnect);
+    });
 
 
 }
