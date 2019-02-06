@@ -69,8 +69,6 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
                 const config = {
                     url: 'http://localhost:8887/src'
                 };
-
-                result.user.sendEmailVerification(config)
                 result.user.sendEmailVerification(config)
                     .catch((err) => {
                         alert(err.message);
