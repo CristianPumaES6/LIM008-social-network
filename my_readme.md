@@ -1,10 +1,30 @@
+# SOCIAL NETWORK
 
-iniciar el proyecto con node server
+Ejercio de laboratoria dentro de su silabu.
 
-main JS:
+## INSTALACIONES
+
+Los siguientes comandos ejecutan el proyecto en node.
+
+```nodejs
+configurar FireBase
+npm install
+node server.js
+```
+
+## Estructura de Main.js
+
+```
+main.js
 -UI/router
 --template/pageinite.js
----UI/view-controller
+---UI/view-controller.js
 ----lib/authBD/authFireBase.js
 
-habilitar BD; para el fireStore.
+## Contributing
+MAYRATC
+CristianPumaES6
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
