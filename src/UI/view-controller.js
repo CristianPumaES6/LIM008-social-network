@@ -67,7 +67,7 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
                 alert(`Se te ha enviado un mensaje de correo electronico:${result.user.email} \n Por favor de verificarlo para terminar con el proceso! Gracias`);
                 
                 const config = {
-                    url: 'http://localhost:8887/src'
+                    url: 'http://localhost:3000'
                 };
                 result.user.sendEmailVerification(config)
                     .catch((err) => {
