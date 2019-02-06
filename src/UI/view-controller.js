@@ -62,8 +62,18 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
     buttonAcept.addEventListener('click', () => {
         createUser(userEmail.value, userPassword.value)
             .then((result) => {
-                console.log("------createUser success-------")
-                console.log(result)
+                alert(`Se te ha enviado un mensaje de correo electronico:${result.user.email}
+                     Por favor de verificarlo para terminar con el proceso! Gracias`);
+
+                const config = {
+                    url: 'http://localhost:3000'
+                };
+                // sendEmail(config)
+                result.user.sendEmailVerification(config)
+                    .catch((err) => {
+                        alert(err.message);
+                    });
+
             }).catch((err) => {
                 console.log("------createUser error-------")
                 console.log(err)
