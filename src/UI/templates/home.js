@@ -1,6 +1,7 @@
-import { mainRedSocial} from '../view-controller.js';
+import { mainRedSocial } from '../view-controller.js';
 
 export default () => {
     const butonLogOut = document.getElementById('buttonLogOut');
-    mainRedSocial(butonLogOut);
+    const buttonDeleteUser = document.getElementById('buttonDeleteUser');
+    mainRedSocial(butonLogOut, buttonDeleteUser);
 }
