@@ -3,6 +3,16 @@ import { createUserFireStore, readUserFireStore, deleteUserFireStore } from '../
 
 const changeHash = (hash) => location.hash = hash;
 
+const createUserByObjectUser = (objUser) => {
+    Object.keys(objUser).forEach((ele) => {
+
+        createUserFireStore('Users', objUser.correo, ele, objUser[ele])
+            .then(() => console.log('documento se escribio correctamente'))
+            .catch(() => console.log(err.message));
+
+    });
+};
+
 const detectPromisesCreateUser = (funct) => {
     //result tiene todo los datos de facebook o Gmial (result = Object)
     funct.then((result) => {
@@ -24,15 +34,9 @@ const detectPromisesCreateUser = (funct) => {
                         edad: ''
                     };
 
-                    console.log(objDataUser);
+                    createUserByObjectUser(objDataUser);
 
-                    Object.keys(objDataUser).forEach((ele) => {
 
-                        createUserFireStore('Users', objDataUser.correo, ele, objDataUser[ele])
-                            .then(() => console.log('documento se escribio correctamente'))
-                            .catch(() => console.log(err.message));
-
-                    });
 
                 } else console.log('Usuario ya existe en la BD');
                 changeHash('/home');
@@ -76,6 +80,17 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
                         alert(err.message);
                     });
 
+                let objDataUser = {
+                    usuario: '',
+                    correo: userEmail.value,
+                    foto: '.img',
+                    estado: '',
+                    edad: ''
+                };
+
+                createUserByObjectUser(objDataUser);
+
+
             }).catch((err) => {
                 console.log("------createUser error-------")
                 console.log(err)
@@ -107,7 +122,7 @@ export const mainRedSocial = (buttonLogOut, buttonDeleteUser) => {
         console.log(userConnect);
         logOutUser().then(() => {
             console.log('usuario fiuera de sesion');
-            
+
             changeHash('');
         }).catch((err) => {
             console.log(err.message)
