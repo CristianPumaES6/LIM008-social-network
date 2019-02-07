@@ -1,6 +1,8 @@
 import { createUser, authenticateFacebook, authenticateGoogle, logInUser, userStateChange, logOutUser } from '../lib/authBD/authFireBase.js';
 import { createUserFireStore, readUserFireStore, deleteUserFireStore } from '../lib/crudBD/crudUser.js';
 
+const changeHash = (hash) => location.hash = hash;
+
 const detectPromisesCreateUser = (funct) => {
     //result tiene todo los datos de facebook o Gmial (result = Object)
     funct.then((result) => {
@@ -33,7 +35,7 @@ const detectPromisesCreateUser = (funct) => {
                     });
 
                 } else console.log('Usuario ya existe en la BD');
-
+                changeHash('/home');
             }).catch((err) => {
 
                 console.log("-------ERRR readUserFireStore--------")
@@ -84,9 +86,9 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
 export const btnAcceptLoginAndSendToHome = (inputEmail, inputPassword, buttonAcceptLogin) => {
 
     buttonAcceptLogin.addEventListener('click', () => {
-
+        console.log('click')
         logInUser(inputEmail.value, inputPassword.value).then(() => {
-            console.log("Usuario correcto.")
+            changeHash('/home');
         }).catch((err) => {
             console.log(err.message);
         });
@@ -105,6 +107,8 @@ export const mainRedSocial = (buttonLogOut, buttonDeleteUser) => {
         console.log(userConnect);
         logOutUser().then(() => {
             console.log('usuario fiuera de sesion');
+            
+            changeHash('');
         }).catch((err) => {
             console.log(err.message)
         })
@@ -118,4 +122,18 @@ export const mainRedSocial = (buttonLogOut, buttonDeleteUser) => {
     });
 
 
+}
+
+
+
+export const loginUser = (butttonLogin) => {
+    butttonLogin.addEventListener('click', () => {
+        changeHash("/pagInitSession");
+    })
+}
+
+export const registerOnSubmit = (buttonRegister) => {
+    buttonRegister.addEventListener('click', () => {
+        changeHash("/pagRegister");
+    })
 }
