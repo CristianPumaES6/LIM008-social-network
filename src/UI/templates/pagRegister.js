@@ -5,14 +5,14 @@ export default () => {
   const container = document.getElementById('container');
   const tPagRegister = `
   <h2 class="text-center">únete a nuestra comunidad</h2>
-  <form>
+  <!--form-->
     <input type="text" id="createUsername" class="username" placeholder="nombre de usuario">
     <input type="text" id="createEmail"  class="correo" placeholder="correo">
     <input type="password" id="createPassword" class="password" placeholder="constraseña">
     <button class="btn-register" id="buttonAcceptRegister">
     Registrar
     </button>
-  </form>
+  <!--/form-->
   `;
   container.innerHTML = tPagRegister;
   const createUsername = document.getElementById('createUsername');
