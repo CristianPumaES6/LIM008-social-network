@@ -22,10 +22,14 @@ export const logInUser = (email, password) => {
 };
 
 export const userStateChange = (user) => {
-    
+
     return firebase.auth().onAuthStateChanged((userState) => user.push(userState));;
 };
 
 export const logOutUser = () => {
     return firebase.auth().signOut();
+}
+
+export const dataConnectUser = () => {
+    return firebase.auth().currentUser;
 }
