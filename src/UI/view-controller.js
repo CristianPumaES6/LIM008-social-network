@@ -101,7 +101,7 @@ export const btnAcceptRegisterAndSendToHome = (userName, userEmail, userPassword
 export const btnAcceptLoginAndSendToHome = (inputEmail, inputPassword, buttonAcceptLogin) => {
 
     buttonAcceptLogin.addEventListener('click', () => {
-        console.log('click')
+
         logInUser(inputEmail.value, inputPassword.value).then(() => {
             changeHash('/home');
         }).catch((err) => {
@@ -121,7 +121,7 @@ export const mainRedSocial = (buttonLogOut, buttonDeleteUser) => {
         let userConnect = firebase.auth().currentUser.email;
         console.log(userConnect);
         logOutUser().then(() => {
-            console.log('usuario fiuera de sesion');
+            console.log('usuario fuera de sesion');
 
             changeHash('');
         }).catch((err) => {
