@@ -1,21 +1,23 @@
-import { btnAcceptLoginAndSendToHome } from '../view-controller.js';
+import { btnAcceptLoginAndSendToHome} from '../view-controller.js';
 
 export default () => {
-    const container = document.getElementById('container');
-    const tPagRegister = `
-    
+  const container = document.getElementById('container');
+  const divContent = `
+    <form>
       <h2 class="text-center">communitytech</h2>
       <input type="text" id="inputEmail" class="username-o-correo" placeholder="nombre de usuario o correo">
       <input type="password" id="inputPassword" class="password-enter" placeholder="contraseña">
-      <h5 class="missed">¿Olvidaste tu cuenta?</h7>
-      <button id="buttonAcceptLogin" class="btn-inite-sesion">Iniciar sesion</button>
-    
-    `
-    container.innerHTML = tPagRegister;
-    const inputEmail = document.getElementById('inputEmail');
-    const inputPassword = document.getElementById('inputPassword');
-    const buttonAcceptLogin = document.getElementById('buttonAcceptLogin');
+    </form>
+    <button id="missedPassword" class="missed">¿Olvidaste tu contraseña?</button>    
+    <button id="buttonAcceptLogin" class="btn-inite-sesion">Iniciar sesion</button>    
+    `;
+  container.innerHTML = divContent;
 
-    btnAcceptLoginAndSendToHome(inputEmail, inputPassword, buttonAcceptLogin);
+  const inputEmail = document.getElementById('inputEmail');
+  const inputPassword = document.getElementById('inputPassword');
+  const missedPassword = document.getElementById('missedPassword');
+  const buttonAcceptLogin = document.getElementById('buttonAcceptLogin');
+  btnAcceptLoginAndSendToHome(inputEmail, inputPassword, buttonAcceptLogin, missedPassword);
 
-}
+  return 1;
+};
